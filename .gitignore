@@ -1,0 +1,12 @@
+
+.DS_Store
+doctor.xlsx
+*.pyc
+*.log
+healthcare-booking/titanic_dataset.csv
+healthcare-calendar/package-lock.json
+healthcare-frontend/package-lock.json
+healthcare-frontend/static/img/mccoy.jpeg
+Healthcare.jmx
+*.yaml
+yaml/survivor.code-workspace
