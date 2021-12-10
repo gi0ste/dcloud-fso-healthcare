@@ -57,11 +57,11 @@ function addAppDynamicsData (appointment) {
     appd.addSnapshotData("hc_patient_specialty", appointment.specialty);
 
     console.log(name + ": Sending AppDynamics Snapshot data...!:")
-    appd.addAnalyticsData("hc_patient_name", appointment.name);
-    appd.addAnalyticsData("hc_patient_lastname", appointment.lastname);
+    //appd.addAnalyticsData("hc_patient_name", appointment.name);
+    //appd.addAnalyticsData("hc_patient_lastname", appointment.lastname);
     appd.addAnalyticsData("hc_patient_age", parseInt(appointment.age, 10));
     appd.addAnalyticsData("hc_patient_gender", appointment.gender);
-    appd.addAnalyticsData("hc_patient_mobile", appointment.mobile);
+    //appd.addAnalyticsData("hc_patient_mobile", appointment.mobile);
     appd.addAnalyticsData("hc_patient_date", appointment.date);
     appd.addAnalyticsData("hc_patient_creditcard", appointment.creditcard);
     appd.addAnalyticsData("hc_patient_doctor", appointment.doctor);

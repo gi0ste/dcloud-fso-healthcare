@@ -1,5 +1,7 @@
 # Use node as base image
-FROM node:10.16.0-alpine
+#FROM node:10.16.0-alpine
+
+FROM node:14.4-alpine
 
 # Set the working directory to /
 WORKDIR /

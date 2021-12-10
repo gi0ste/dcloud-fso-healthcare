@@ -12,7 +12,7 @@ ADD requirements.txt /
 #ARG https_proxy=http://proxy-wsa.esl.cisco.com:80
 
 # Install requirements
-RUN pip install -r requirements.txt && pip install -U appdynamics==4.5.4.0
+RUN pip install -r requirements.txt && pip install -U appdynamics==21.10.0.4495 
 
 # Set Entry point
 ENV APP_ENTRY_POINT "python /offers.py"

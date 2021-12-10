@@ -8,7 +8,7 @@
     "start": "node shim.js"
   },
   "dependencies": {
-    "appdynamics": "^4.5.22",
+    "appdynamics": "^21.1.0",
     "body-parser": "^1.19.0",
     "connect": "^3.7.0",
     "console-stamp": "^0.2.9",
@@ -20,6 +20,8 @@
     "path": "^0.12.7",
     "redis": "^2.8.0",
     "request": "^2.88.0",
+    "swagger-autogen": "^2.12.6",
+    "swagger-ui-express": "^4.1.4",
     "winston": "^3.3.3"
   },
   "nodemonConfig": {
@@ -34,7 +36,6 @@
       "CALENDAR_PORT": 5050,
       "SEARCH_SERVICE": "35.202.189.49",
       "SEARCH_PORT": 5051
-      
     }
   },
   "license": "ISC"
