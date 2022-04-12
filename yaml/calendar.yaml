@@ -1,31 +1,31 @@
 ##################################################################################################
-# Refund service
+# Calendar service
 ##################################################################################################
 
 apiVersion: v1
 data:
   shim.js: |-
     require("appdynamics").profile({
-        controllerHostName: 'XYZ.saas.appdynamics.com',
-        controllerPort: 80,
-        controllerSslEnabled: false,
-        accountName: 'ACCOUNT_NAME',
-        accountAccessKey: 'ACCESS_KEY',
+        controllerHostName: 'altron-nfr.saas.appdynamics.com',
+        controllerPort: 443,
+        controllerSslEnabled: true,
+        accountName: 'altron-nfr',
+        accountAccessKey: '8d8xkjyh769j',
         applicationName: 'healthcare',
-        tierName: 'refundService',
-        nodeName: 'refundService',
-        analyticsHostName: 'XYZ.saas.appdynamics.com',
+        tierName: 'calendarService',
+        nodeName: 'calendarService',
+        analyticsHostName: 'altron-nfr.saas.appdynamics.com',
         analyticsPort: 443,
         analyticsSslEnabled: true,
         analytics: {
-              host: 'appd-infraviz.appdynamics',
+              host: 'appd-analytics-proxy',
               port: 9090,
             SSL: false }});
-        require("./refund.js")
+        require("./calendar.js")
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: appd-nodejs-cm-refund
+  name: appd-nodejs-cm-calendar
 
 ---
 
@@ -34,16 +34,16 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: refund
+    app: calendar
     version: "1"
-  name: refund
+  name: calendar
 spec:
   ports:
   - port: 5050
     protocol: TCP
     targetPort: 5050
   selector:
-    app: refund
+    app: calendar
     version: "1"
   type: LoadBalancer
 
@@ -51,28 +51,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: refund
+  name: calendar
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: refund
+      app: calendar
   template:
     metadata:
       labels:
-        app: refund
+        app: calendar
         version: "1"
     spec:
       containers:
       - env:
-        - name: REDIS_SERVICE
-          value: "redis"
-        - name: REDIS_PORT
-          value: "6379"
         - name: APPD_PROXY_CONTROL_PATH
           value: /tmp/appd/run
-        name: refund
-        image: DOCKER_IMAGE_NAME
+        name: calendar
+        image: "sgioia/fso-healthcare-calendar:30"
         imagePullPolicy: Always
         volumeMounts:
           - name: agent-config
@@ -95,4 +91,4 @@ spec:
       volumes:
         - name: agent-config
           configMap:
-            name: appd-nodejs-cm-refund
+            name: appd-nodejs-cm-calendar
