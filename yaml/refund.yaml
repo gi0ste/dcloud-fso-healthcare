@@ -25,7 +25,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: appd-nodejs-cm
+  name: appd-nodejs-cm-refund
 
 ---
 
@@ -95,4 +95,4 @@ spec:
       volumes:
         - name: agent-config
           configMap:
-            name: appd-nodejs-cm
+            name: appd-nodejs-cm-refund
